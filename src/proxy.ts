@@ -9,8 +9,11 @@ const isPublicRoute = createRouteMatcher([
 
 export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)){
-    await auth.protect(); // it will protect the user to go tothe unauthorized routes
+    const session =  auth.protect(); // it will protect the user to go to the unauthorized routes
+    console.log(session)
   }
+
+
 });
 
 export const config = {

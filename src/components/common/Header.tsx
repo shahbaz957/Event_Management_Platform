@@ -3,11 +3,12 @@
 import React from "react";
 import { UserButton, useUser} from "@clerk/nextjs";
 import Link from "next/link";
+import { Loader } from "lucide-react";
 
 function Header() {
-  const { isSignedIn, user } = useUser();
+  const { isSignedIn, user , isLoaded } = useUser();
   const userRole = user?.publicMetadata?.role as string;
-
+  if (!isLoaded) return <div className="flex items-center"><Loader/></div>
   return (
     <div className="flex items-center justify-between px-6 py-4 border-b">
       <Link href="/">
