@@ -16,7 +16,7 @@ function Header() {
           <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Event
           </span>
-          <span className="text-gray-900 dark:text-white ml-2">Bridge</span>
+          <span className="text-shadow-indigo-200 dark:text-white ml-2">Bridge</span>
         </h1>
       </Link>
 
@@ -48,7 +48,7 @@ function Header() {
 
                 <Link
                   href="/analytics"
-                  className="px-4 py-2 text-gray-700 hover:text-blue-600 transition"
+                  className="px-4 py-2 text-shadow-white hover:text-blue-600 transition"
                 >
                   Analytics
                 </Link>
@@ -57,7 +57,7 @@ function Header() {
 
             <Link
               href="/my-bookings"
-              className="px-4 py-2 text-gray-700 hover:text-blue-600 transition"
+              className="px-4 py-2 text-shadow-white hover:text-blue-600 transition"
             >
               My Bookings
             </Link>
