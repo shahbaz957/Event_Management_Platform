@@ -17,6 +17,7 @@ import Link from "next/link";
 
 function EventPage({ event }: { event: Event }) {
   const {user} = useUser();
+  const userValid = user?.id === event.organizer_id;
 
   const fullName = user?.fullName;
   // Format date and time
@@ -134,9 +135,13 @@ function EventPage({ event }: { event: Event }) {
             </div>
 
             {/* Register Button */}
+            {!userValid && 
+            <Link href={`/event/${event.id}/register`}>
             <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:scale-[1.02] mt-4">
               Register for Event
             </button>
+            </Link>
+            }
           </div>
         </div>
       </div>
@@ -191,8 +196,8 @@ function EventPage({ event }: { event: Event }) {
 
             {/* Organizer & Seats Section */}
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-zinc-800">
-                <div className="bg-blue-600/20 p-3 rounded-lg">
+              {/* <div className="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-zinc-800"> */}
+                {/* <div className="bg-blue-600/20 p-3 rounded-lg">
                   <User className="w-6 h-6 text-blue-400" />
                 </div>
                 <div className="flex-1">
@@ -200,8 +205,8 @@ function EventPage({ event }: { event: Event }) {
                   <p className="text-white font-semibold text-lg break-all">
                     {fullName?.toLocaleUpperCase()}
                   </p>
-                </div>
-              </div>
+                </div> */}
+              {/* </div> */}
 
               <div className="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-zinc-800">
                 <div className="bg-blue-600/20 p-3 rounded-lg">

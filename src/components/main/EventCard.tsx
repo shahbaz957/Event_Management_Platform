@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
+import Link from "next/link";
 
 interface Event {
   id : string,
@@ -105,9 +106,11 @@ function EventCard({ event }: EventProps) {
         </div>
 
         {/* CTA Button */}
+        <Link href={`/event/${event.id}/register`}>
         <button className="w-full mt-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200 shadow-lg shadow-blue-600/20 hover:shadow-blue-500/30">
           Register Now
         </button>
+        </Link>
       </div>
     </div>
   );
