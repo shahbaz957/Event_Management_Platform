@@ -3,6 +3,7 @@ import { db } from "@/db/index";
 import { eq, desc } from "drizzle-orm";
 import { NextResponse, NextRequest } from "next/server";
 import { bookings } from "@/db/schema";
+import { auth } from "@clerk/nextjs/server";
 
 export async function GET(
   request: NextRequest,
@@ -29,7 +30,6 @@ export async function GET(
       .from(events)
       .where(eq(events.id, eventId))
       .limit(1)
-      .orderBy(desc(events.id));
 
     if (event.length === 0) {
       return NextResponse.json({ message: "Event not found" }, { status: 404 });
@@ -49,11 +49,20 @@ export async function POST(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
+  
   try {
+    
+    // if (!userId){ 
+    //   return NextResponse.json(
+    //     {message : "UserId is required"},
+    //     {status : 422}
+    //   )
+    // } 
+
     const { id } = await context.params;
     const eventId = Number(id);
     const body = await request.json();
-    const { seatsBooked, userId } = body;
+    const { seatsBooked , userId } = body;
     if (isNaN(eventId)) {
       return NextResponse.json({ message: "Invalid Data" }, { status: 400 });
     }
@@ -86,20 +95,23 @@ export async function POST(
       .where(eq(events.id, eventId))
       .returning();
 
-    const booking = await db
+    await db
       .insert(bookings)
       .values({
         userId: userId,
         eventId: eventId,
         numofSeats: seatsBooked,
       })
-      .returning();
 
     return NextResponse.json(
-      { message: "Seats are Updated", event: updated, booking: booking },
+      { message: "Seats are Updated", event: updated},
       { status: 200 }
     );
   } catch (error) {
     console.log("ERROR : ", error);
+    return NextResponse.json(
+      { message: "Remaining Seats or Booking is not updated" },
+      { status: 500 }
+    );
   }
 }

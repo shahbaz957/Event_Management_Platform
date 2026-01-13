@@ -25,7 +25,7 @@ export const events = pgTable("events", {
 });
 
 
-export const bookings = pgTable("Bookings", {
+export const bookings = pgTable("bookings", {
   id: serial("id").primaryKey(),
   userId: varchar("userId", { length: 200 }),
   eventId: integer("eventId").references(() => events.id, {

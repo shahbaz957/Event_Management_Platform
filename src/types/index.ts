@@ -4,7 +4,7 @@ export interface Event {
     title: string, 
     description : string,
     total_seats : number , 
-    remaining_seats : number , 
+    rem_seats : number , 
     designation : string, 
     location : string , 
     img_url  : string,

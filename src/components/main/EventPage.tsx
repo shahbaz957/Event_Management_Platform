@@ -39,7 +39,7 @@ function EventPage({ event }: { event: Event }) {
     minute: "2-digit",
   });
 
-  let seatsBooked = event.total_seats - event.remaining_seats;
+  let seatsBooked = event.total_seats - event.rem_seats;
   if (isNaN(seatsBooked)){
     seatsBooked = 0;
   }
@@ -77,7 +77,7 @@ function EventPage({ event }: { event: Event }) {
             {/* Seats Badge on Image */}
             <div className="absolute top-4 right-4 bg-blue-600/90 backdrop-blur-sm px-4 py-2 rounded-full">
               <p className="text-white font-semibold text-sm">
-                {event.remaining_seats} Seats Available
+                {event.rem_seats === 0 ? "Not Available" : "Available"}
               </p>
             </div>
           </div>
@@ -227,8 +227,8 @@ function EventPage({ event }: { event: Event }) {
                 <div className="flex-1">
                   <p className="text-gray-400 text-sm mb-1">Seating Info</p>
                   <div className="flex items-center gap-4 text-white font-semibold text-lg">
-                    <span className="text-green-400">
-                      {event.total_seats - seatsBooked} Available
+                    <span className={event.rem_seats === 0 ? "text-red-600" : "text-green-400"}>
+                      {event.rem_seats} Available
                     </span>
                     <span className="text-gray-500">•</span>
                     <span className="text-gray-400">
