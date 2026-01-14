@@ -137,8 +137,9 @@ function EventPage({ event }: { event: Event }) {
             {/* Register Button */}
             {!userValid && 
             <Link href={`/event/${event.id}/register`}>
-            <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:scale-[1.02] mt-4">
-              Register for Event
+            <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:scale-[1.02] mt-4"
+            disabled={event.rem_seats === 0}>
+              {event.rem_seats === 0 ? "Registration Closed" :"Register for Event"}
             </button>
             </Link>
             }

@@ -45,13 +45,6 @@ function Header() {
                 >
                   Create Event
                 </Link>
-
-                <Link
-                  href="/analytics"
-                  className="px-4 py-2 text-shadow-white hover:text-blue-600 transition"
-                >
-                  Analytics
-                </Link>
               </>
             )}
 
