@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Event Management Platform
 
-## Getting Started
+A full-stack event management application where **organizers** can create & publish events, and **users** can discover events and register to attend. Organizers also get a dashboard to track registrations and basic analytics.  
+Built with Next.js (App Router), Clerk authentication, and shadcn/ui.
 
-First, run the development server:
+---
 
+## Features
+
+### User-facing
+- Browse and search events (upcoming/past, categories, location, etc.)
+- Event detail pages (agenda, venue, timing, organizer, capacity)
+- Register / cancel registration (if enabled)
+- Auth-protected user profile / registrations list
+
+### Organizer-facing
+- Organizer onboarding / role-based access
+- Create events
+- Manage attendee registrations
+
+### Platform
+- Authentication + session management via Clerk
+- Protected routes & role-based authorization
+- Responsive UI components via shadcn/ui
+- Server-side rendering + server actions / route handlers 
+
+---
+
+## Tech Stack
+
+### Frontend
+- Next.js 16 (App Router)  
+- React
+- TypeScript 
+- shadcn/ui (Radix UI primitives + Tailwind patterns + Lucide-React)
+- Tailwind CSS
+
+### Backend (within Next.js)
+- Next.js Route Handlers (`app/api/...`) and/or Server Actions
+- Data access: Drizzle 
+- Database: PostgreSQL
+- DB-Platform: NeonDB
+
+### Auth & Identity
+- Clerk (Sign In/Up, sessions, middleware protection)
+
+### Tooling / Platform
+- Node.js
+- Package manager: npm / pnpm / yarn 
+- Deployment: Vercel 
+
+---
+
+## Architecture Overview
+
+- **App Router** pages live under `app/`
+- **API routes** (Route Handlers) live under `app/api/`
+- **UI components** follow shadcn/ui conventions (commonly `components/ui`)
+
+## Clone
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/shahbaz957/Event_Management_Platform.git
+cd Event_Management_Platform
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Clerk (required)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+CLERK_SECRET_KEY=sk_**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Clerk URLs (recommended)
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
 
-## Learn More
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 
-To learn more about Next.js, take a look at the following resources:
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Database (if applicable) (I used NeonDB (cloud based Postgres DB provider))
+DATABASE_URL=...
 
-## Deploy on Vercel
+## App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Auth** handled by Clerk provider + middleware protection (recommended setup)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# Developer 
+## Name : Mirza Shahbaz Ali Baig
+📧 Email: mirzashahbazbaig724@gmail.com  
+[💼 LinkedIn](https://www.linkedin.com/in/mirza-shahbaz-ali-baig-3391b3248/) 
+
+---
+# Live APP: 
+## [🚀 Live App](https://event-bridge-ems.vercel.app/)
