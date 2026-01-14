@@ -66,6 +66,9 @@ export async function POST(
     if (isNaN(eventId)) {
       return NextResponse.json({ message: "Invalid Data" }, { status: 400 });
     }
+    if (!userId){
+      return NextResponse.json({ message: "Please Sign In For registration" }, { status: 400 });
+    }
     if (!seatsBooked || typeof seatsBooked !== "number") {
       return NextResponse.json(
         { message: "Invalid seats booked" },

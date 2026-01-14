@@ -8,7 +8,7 @@ import { Loader } from "lucide-react";
 function Header() {
   const { isSignedIn, user , isLoaded } = useUser();
   const userRole = user?.publicMetadata?.role as string;
-  if (!isLoaded) return <div className="flex items-center"><Loader/></div>
+  if (!isLoaded) return <div className="min-h-screen flex items-center justify-center"><Loader/></div>
   return (
     <div className="flex items-center justify-between px-6 py-4 border-b">
       <Link href="/">

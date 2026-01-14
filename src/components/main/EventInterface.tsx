@@ -24,7 +24,7 @@ function EventInterface({ id }: { id: string }) {
 
   if (event === null)
     return (
-      <div>
+      <div className="min-h-screen flex items-center justify-center">
         <Loader />
       </div>
     );

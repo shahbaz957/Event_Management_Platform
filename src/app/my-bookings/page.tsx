@@ -1,8 +1,9 @@
 import React from 'react'
-
+import BookGrid from '@/components/main/BookGrid'
 function Booking() {
+
   return (
-    <div>Booking</div>
+    <div><BookGrid/></div>
   )
 }
 
