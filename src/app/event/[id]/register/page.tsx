@@ -76,7 +76,7 @@ function Register() {
     <div className="max-w-md mx-auto mt-16 p-6 rounded-2xl
       bg-zinc-950 border border-indigo-500/20
       shadow-[0_0_30px_rgba(99,102,241,0.35)]
-      space-y-6">
+      space-y-6 mb-10">
 
       {/* Header */}
       <div className="text-center space-y-2">
