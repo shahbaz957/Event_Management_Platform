@@ -1,5 +1,5 @@
 export interface Event {
-    id : string | undefined , 
+    id : string  , 
     organizer_id : string, 
     title: string, 
     description : string,
@@ -8,7 +8,7 @@ export interface Event {
     designation : string, 
     location : string , 
     img_url  : string,
-    date : string,
-    st_time : string ,
-    end_time : string
+    date : Date,
+    st_time : Date ,
+    end_time : Date
 }

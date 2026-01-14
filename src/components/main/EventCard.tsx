@@ -11,12 +11,12 @@ interface Event {
   title: string;
   description: string;
   total_seats: number;
-  remaining_seats: number;
-  status: string;
+  rem_seats: number;
+  designation: string;
   location: string;
   img_url: string;
   date: Date;
-  start_time: Date;
+  st_time: Date;
   end_time: Date;
 }
 
@@ -33,7 +33,7 @@ function EventCard({ event }: EventProps) {
     day: "numeric",
   });
 
-  const startTime = new Date(event.start_time).toLocaleTimeString("en-US", {
+  const startTime = new Date(event.st_time).toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
   });
@@ -55,7 +55,7 @@ function EventCard({ event }: EventProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div className="absolute top-3 right-3 bg-blue-600/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-white">
-          {event.remaining_seats} seats left
+          {event.rem_seats} seats left
         </div>
       </div>
 
@@ -103,7 +103,7 @@ function EventCard({ event }: EventProps) {
         {/* Status Badge */}
         <div className="mt-4 pt-4 border-t border-zinc-800">
           <span className="inline-block bg-blue-600/20 text-blue-400 text-xs font-medium px-3 py-1 rounded-full border border-blue-500/30">
-            {event.status}
+            {event.designation}
           </span>
         </div>
 

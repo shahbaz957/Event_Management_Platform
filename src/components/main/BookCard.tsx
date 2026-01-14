@@ -18,7 +18,7 @@ interface Booking {
 
 interface BookingProps {
   booking: Booking;
-onDelete?: (bookingId: string) => void;
+onDelete: (bookingId: string) => void;
 }
 
 function BookCard({ booking , onDelete}: BookingProps) {
@@ -54,7 +54,7 @@ function BookCard({ booking , onDelete}: BookingProps) {
       });
       const data = await res.json();
       console.log(data);
-      if (res.ok){
+      if (res.ok && booking.bookingId != null){
         onDelete(booking.bookingId)
       }
     } catch (error) {

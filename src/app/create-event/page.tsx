@@ -57,7 +57,7 @@ function CreateEvent() {
 
       for (const key in form) {
         if (key == "image") continue;
-        formData.append(key, form[key].toString());
+        formData.append(key, form[key as keyof FormState]?.toString() ?? "");
       }
       if (form.image) {
         formData.append("image", form.image);

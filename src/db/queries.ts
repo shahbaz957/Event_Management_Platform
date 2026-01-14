@@ -10,12 +10,12 @@ export async function fetchAllEvents(){
         title : events.title,
         description : events.description,
         total_seats : events.total_seats,
-        remaining_seats : events.rem_seats,
-        status : events.designation,
+        rem_seats : events.rem_seats,
+        designation : events.designation,
         location : events.location,
         img_url : events.img_url,
         date : events.date,
-        start_time : events.st_time,
+        st_time : events.st_time,
         end_time : events.end_time
     }).from(events)
 }

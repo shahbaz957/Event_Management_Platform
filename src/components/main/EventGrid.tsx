@@ -92,7 +92,7 @@ function EventGrid() {
 
       {/* Events Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-        {events.map((event , index) => (
+        {events.map((event , index) =>  (
           <Link href={`/event/${event.id}`} key={index}>
           <EventCard event={event}  />
           </Link>
