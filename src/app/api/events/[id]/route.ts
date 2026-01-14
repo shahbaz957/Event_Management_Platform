@@ -29,7 +29,7 @@ export async function GET(
       .select()
       .from(events)
       .where(eq(events.id, eventId))
-      .limit(1)
+      .limit(1);
 
     if (event.length === 0) {
       return NextResponse.json({ message: "Event not found" }, { status: 404 });
@@ -49,25 +49,26 @@ export async function POST(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  
   try {
-    
-    // if (!userId){ 
+    // if (!userId){
     //   return NextResponse.json(
     //     {message : "UserId is required"},
     //     {status : 422}
     //   )
-    // } 
+    // }
 
     const { id } = await context.params;
     const eventId = Number(id);
     const body = await request.json();
-    const { seatsBooked , userId } = body;
+    const { seatsBooked, userId } = body;
     if (isNaN(eventId)) {
       return NextResponse.json({ message: "Invalid Data" }, { status: 400 });
     }
-    if (!userId){
-      return NextResponse.json({ message: "Please Sign In For registration" }, { status: 400 });
+    if (!userId) {
+      return NextResponse.json(
+        { message: "Please Sign In For registration" },
+        { status: 400 }
+      );
     }
     if (!seatsBooked || typeof seatsBooked !== "number") {
       return NextResponse.json(
@@ -85,6 +86,9 @@ export async function POST(
         { status: 400 }
       );
     }
+    if (!fevents || fevents.length === 0) {
+      return NextResponse.json({ message: "Event not found" }, { status: 404 });
+    }
     if (fevents[0].rem_seats < seatsBooked) {
       return NextResponse.json(
         { message: "Not enough seats to be Booked" },
@@ -98,16 +102,14 @@ export async function POST(
       .where(eq(events.id, eventId))
       .returning();
 
-    await db
-      .insert(bookings)
-      .values({
-        userId: userId,
-        eventId: eventId,
-        numofSeats: seatsBooked,
-      })
+    await db.insert(bookings).values({
+      userId: userId,
+      eventId: eventId,
+      numofSeats: seatsBooked,
+    });
 
     return NextResponse.json(
-      { message: "Seats are Updated", event: updated},
+      { message: "Seats are Updated", event: updated },
       { status: 200 }
     );
   } catch (error) {
